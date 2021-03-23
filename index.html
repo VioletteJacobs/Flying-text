@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <section>
+        <p class="paragraphe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed in dignissimos minus corrupti esse, consectetur repellat aut est maiores autem unde itaque labore ullam optio reiciendis rem beatae sit natus.</p>
+    </section>
+    <script src="anime.min.js"></script>
+    <script>
+        const text = document.querySelector(".paragraphe");
+        text.innerHTML = text.textContent.replace(/./g, "<span>$&</span>");
+
+        const animation = anime.timeline({
+            targets : ".paragraphe span",
+            easeing : "easeInOutExpo",
+            loop : true,
+        });
+        animation 
+            .add({
+                rotate : function(){
+                    return anime.random(-360, 360)
+                },
+                translateX : function(){
+                    return anime.random(-500, 500)
+                },
+                translateY : function(){
+                    return anime.random(-500, 500)
+                },
+                duration : 5000,
+                delay : anime.stagger(20),
+            })
+            .add({
+                rotate : 0,
+                translateX : 0,
+                translateY : 0,
+                duration : 5000,
+                delay : anime.stagger(20),
+            })
+    </script>
+</body>
+</html>
